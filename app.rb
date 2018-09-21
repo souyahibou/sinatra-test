@@ -8,6 +8,8 @@ get "/" do
 end
 
 get "/:post" do
+  @database=DB[params['post'].to_i]
+  @comments=COMMENTS[params['post'].to_i]
   erb :article
 end
 

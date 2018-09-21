@@ -1,0 +1,16 @@
+<div class="container">
+	<h1   id="title_tag"> <%= @database[:title] %> </h1>
+	<img  id="photo_tag" src =<%= @database[:photo] %>>
+	<p    id="post_tag" > <%= @database[:content] %> </p>
+	<span id="rate_tag" > <%= '<span class="glyphicon glyphicon-star"></span>' * @database[:rating].to_i %>  </span>
+	<ul   id="comments" > 
+            <% @comments.each do |comment| %>
+            <li> <%= comment %> </li>
+            <% end %>
+        </ul>
+</div>
+
+
+
+
+
