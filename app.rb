@@ -2,6 +2,12 @@ require "sinatra"
 require "sinatra/reloader" if development?
 require_relative "database"
 
+
 get "/" do
-  @database = DB
+  erb :index
 end
+
+get "/:post" do
+  erb :article
+end
+

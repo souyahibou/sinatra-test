@@ -1,0 +1,49 @@
+
+
+<div class="jumbotron">
+    <div class="container">
+        <h1>Listing Posts</h1>
+        <p> Index table of all posts, click on one of these posts to see associated comments </p>
+    </div>
+</div>
+
+<table class="table-striped">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Content</th>
+      <th>Rating</th>
+      <th colspan="2">See Post</th>
+    </tr>
+  </thead>
+ 
+  <tbody >
+    <% DB.each do |book| %>
+      <% idx = DB.find_index(book) %>
+      <tr>
+        <td><%= book[:title] %></td>
+        <td><%= book[:content] %></td>
+        <td><%= book[:rating] %></td>
+        <td> <a href="#<%= idx + 1%>" class="btn btn-primary btn-lg" onclick="post_displaying('<%= DB[idx][:title].gsub("'","`") %>', '<%=DB[idx][:content].gsub("'","`") %>', '<%= DB[idx][:rating] %>', '<%= DB[idx][:photo] %>', '<%= COMMENTS[idx].join("|").gsub("'","`") %>');">Show Post</a> </td>
+        <td> <img src=<%= book[:photo] %> alt="sinatra posts test"> </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<br>
+ 
+
+
+
+
+<div class="container">
+	<h1   id="title_tag"> </h1>
+	<img  id="photo_tag">
+	<p    id="post_tag" > </p>
+	<span id="rate_tag" > </span>
+	<ul   id="comments" > </ul>
+</div>
+
+
+
+<script src="main.js"></script>
